@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: quickstarts
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: quickstarts
+    app.kubernetes.io/part-of: quickstarts
+  name: quickstarts
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: quickstarts
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: quickstarts
+    spec:
+      containers:
+      - image: image
+        imagePullPolicy: Always
+        name: container-image
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
